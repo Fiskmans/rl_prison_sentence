@@ -67,38 +67,41 @@ public class Sentence {
     {
         assert myInfobox == null;
 
-        if (myShutDownRequested)
+        synchronized (myShutDownRequested)
         {
+            if (myShutDownRequested)
+            {
+                mySetupTimer.stop();
+                return;
+            }
+
+            if (!myCurrent.IsReady(myPrisonType))
+                return;
+
+            if (!mySource.IsReady())
+                return;
+
             mySetupTimer.stop();
-            return;
-        }
 
-        if (!myCurrent.IsReady(myPrisonType))
-            return;
-
-        if (!mySource.IsReady())
-            return;
-
-        mySetupTimer.stop();
-
-        myProgress = myCurrent.GetCurrentAmount(myPrisonType) - mySource.GetAmountAtStartOfPeriod(myPrisonType, myTarget);
-
-        if (myProgress >= myTarget)
-        {
-            Shutdown();
-            return;
-        }
-
-        myInfobox = new SentenceInfoBox(this, myPrisonType, myPlugin);
-
-        myPlugin.infoBoxManager.addInfoBox(myInfobox);
-
-        myCurrent.OnChange(() -> {
             myProgress = myCurrent.GetCurrentAmount(myPrisonType) - mySource.GetAmountAtStartOfPeriod(myPrisonType, myTarget);
 
             if (myProgress >= myTarget)
+            {
                 Shutdown();
-        });
+                return;
+            }
+
+            myInfobox = new SentenceInfoBox(this, myPrisonType, myPlugin);
+
+            myPlugin.infoBoxManager.addInfoBox(myInfobox);
+
+            myCurrent.OnChange(() -> {
+                myProgress = myCurrent.GetCurrentAmount(myPrisonType) - mySource.GetAmountAtStartOfPeriod(myPrisonType, myTarget);
+
+                if (myProgress >= myTarget)
+                    Shutdown();
+            });
+        }
     }
 
     void TearDown()

@@ -17,7 +17,7 @@ public interface PrisonSentenceConfig extends Config
 			name = "Prison type",
 			description = "The type of prison you are in"
 	)
-	default PrisonType dayPrisonType()
+	default PrisonType prisonType()
 	{
 		return PrisonType.GAUNTLET;
 	}

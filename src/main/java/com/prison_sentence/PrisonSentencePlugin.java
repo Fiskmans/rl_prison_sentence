@@ -1,6 +1,5 @@
 package com.prison_sentence;
 
-import com.prison_sentence.enums.TimePeriod;
 import com.prison_sentence.sources.Current;
 import com.prison_sentence.sources.ISource;
 import com.prison_sentence.sources.Manual;
@@ -10,7 +9,6 @@ import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
 import net.runelite.api.GameState;
-import net.runelite.api.VarPlayer;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.VarbitChanged;
@@ -166,7 +164,7 @@ public class PrisonSentencePlugin extends Plugin
 			return;
 		}
 
-		sentence = new Sentence(source, myCurrent, config.dayPrisonType(), this, config.amount());
+		sentence = new Sentence(source, myCurrent, config.prisonType(), this, config.amount());
 	}
 
 	void TearDown()
