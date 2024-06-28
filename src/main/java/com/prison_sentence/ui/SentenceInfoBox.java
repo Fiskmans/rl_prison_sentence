@@ -31,7 +31,7 @@ public class SentenceInfoBox extends InfoBox {
     @Override
     public Color getTextColor()
     {
-        return Color.red;
+        return Color.white;
     }
 
     String CompactNum(int aNumber)

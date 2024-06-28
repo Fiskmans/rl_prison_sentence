@@ -39,13 +39,13 @@ public interface PrisonSentenceConfig extends Config
 	@ConfigItem(
 			keyName = "start_time",
 			name = "Start time",
-			description = "The time when you started your sentence"
+			description = "The time when your sentence started"
 	)
 	default String startTime() { return Instant.now().toString(); }
 
 	@ConfigItem(
 			keyName = "start_amount",
-			name = "start amount",
+			name = "Start amount",
 			description = "The amount you had when your sentence started"
 	)
 	default int startAmount() { return 0; }
