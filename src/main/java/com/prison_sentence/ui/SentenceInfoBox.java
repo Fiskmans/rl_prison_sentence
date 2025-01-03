@@ -19,24 +19,26 @@ public class SentenceInfoBox extends InfoBox {
 
         mySentence = aSentence;
 
-        setTooltip("Time to get back to prison");
+        setTooltip(mySentence.ToTooltip());
     }
 
     @Override
     public String getText()
     {
-        return CompactNum(mySentence.GetProgress()) + "/" + CompactNum(mySentence.GetTarget());
+        if (mySentence.GetProgress() >= 0)
+        {
+            return mySentence.GetProgress() + "/" + mySentence.GetTarget();
+        }
+        else
+        {
+            return "0/" + mySentence.GetTarget() + " (+" + Math.abs(mySentence.GetProgress()) + ")";
+        }
     }
 
     @Override
     public Color getTextColor()
     {
         return Color.white;
-    }
-
-    String CompactNum(int aNumber)
-    {
-        return Integer.toString(aNumber);
     }
 
 }
