@@ -31,7 +31,7 @@ public class SentenceInfoBox extends InfoBox {
         }
         else
         {
-            return "0/" + mySentence.GetTarget() + " (+" + Math.abs(mySentence.GetProgress()) + ")";
+            return "0/" + (mySentence.GetTarget() - mySentence.GetProgress());
         }
     }
 
