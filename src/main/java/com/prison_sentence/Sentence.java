@@ -4,8 +4,11 @@ import com.prison_sentence.enums.PrisonType;
 import com.prison_sentence.sources.Current;
 import com.prison_sentence.sources.ISource;
 import com.prison_sentence.ui.SentenceInfoBox;
+import com.prison_sentence.ui.Translators;
+import net.runelite.client.util.ColorUtil;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -61,6 +64,11 @@ public class Sentence {
     public int GetTarget()
     {
         return myTarget;
+    }
+
+    public String ToTooltip()
+    {
+        return "Time to get back to " + ColorUtil.wrapWithColorTag(Translators.FriendlyName(myPrisonType), Color.ORANGE);
     }
 
     void Setup()
