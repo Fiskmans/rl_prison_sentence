@@ -19,7 +19,7 @@ public interface PrisonSentenceConfig extends Config
 	)
 	default PrisonType prisonType()
 	{
-		return PrisonType.GAUNTLET;
+		return PrisonType.CORRUPTED_GAUNTLET;
 	}
 
 	@ConfigItem(
