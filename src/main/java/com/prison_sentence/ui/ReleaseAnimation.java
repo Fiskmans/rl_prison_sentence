@@ -27,7 +27,7 @@ public class ReleaseAnimation extends Overlay
             snapped = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_split.png")));
             fragments = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_fragments.png")));
         }
-        Stop();
+        Play();
     }
 
     public void Play()
@@ -84,8 +84,8 @@ public class ReleaseAnimation extends Overlay
             graphics2D.drawImage(snapped, bounds.x, bounds.y, bounds.width, bounds.height, new Color(0,0,0,0), null);
 
 
-            int xPixels = (int)(progress * 192) * 2;
-            int yPixels = (int)(progress * 108) * 2;
+            int xPixels = (int)(progress * bounds.width * 0.1f) * 2;
+            int yPixels = (int)(progress * bounds.height * 0.1f) * 2;
 
             float fragmentAlpha = Math.min(0.9f, 2.0f - progress * 2);
 
@@ -95,7 +95,7 @@ public class ReleaseAnimation extends Overlay
         }
         else
         {
-            Stop();
+            Play();
         }
 
         return new Dimension(0, 0);
