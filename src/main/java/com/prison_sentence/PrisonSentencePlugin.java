@@ -5,6 +5,8 @@ import com.prison_sentence.sources.ISource;
 import com.prison_sentence.sources.Manual;
 import com.google.inject.Provides;
 import javax.inject.Inject;
+
+import com.prison_sentence.ui.ReleaseAnimation;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.ChatMessageType;
 import net.runelite.api.Client;
@@ -20,6 +22,7 @@ import net.runelite.client.events.ConfigChanged;
 import net.runelite.client.game.ItemManager;
 import net.runelite.client.plugins.Plugin;
 import net.runelite.client.plugins.PluginDescriptor;
+import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
 import java.time.Instant;
@@ -45,6 +48,8 @@ public class PrisonSentencePlugin extends Plugin
 	public InfoBoxManager infoBoxManager;
 	@Inject
 	public ClientThread clientThread;
+	@Inject
+	public OverlayManager overlayManager;
 
 	private Current myCurrent = null;
 	private Sentence sentence = null;
@@ -53,9 +58,13 @@ public class PrisonSentencePlugin extends Plugin
 
 	private List<String> myErrors = new ArrayList<>();
 
+	@Inject
+	private ReleaseAnimation animation;
+
 	@Override
 	protected void startUp() throws Exception
 	{
+		overlayManager.add(animation);
 		myCurrent = new Current(this);
 		Setup();
 
@@ -70,6 +79,7 @@ public class PrisonSentencePlugin extends Plugin
 	{
 		TearDown();
 		myCurrent = null;
+		overlayManager.remove(animation);
 	}
 
 	@Subscribe
