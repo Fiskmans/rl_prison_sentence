@@ -26,9 +26,9 @@ public class Translators {
     {
         switch (aPrisonType)
         {
-            case GAUNTLET:            return 2353;
-            case CORRUPTED_GAUNTLET:  return 2354;
-            case CHAMBERS_OF_XERIC:   return 1532;
+            case GAUNTLET:            return VarPlayerID.TOTAL_COMPLETED_GAUNTLET;
+            case CORRUPTED_GAUNTLET:  return VarPlayerID.TOTAL_COMPLETED_GAUNTLET_HM;
+            case CHAMBERS_OF_XERIC:   return VarPlayerID.TOTAL_COMPLETED_XERICCHAMBERS;
             //case THEATRE_OF_BLOOD:    return -1; // TODO
             //case TOOMBS_OF_AMASCUT:   return -1; // TODO
 
