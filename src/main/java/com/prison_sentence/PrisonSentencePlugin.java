@@ -24,6 +24,7 @@ import net.runelite.client.plugins.PluginDescriptor;
 import net.runelite.client.ui.overlay.OverlayManager;
 import net.runelite.client.ui.overlay.infobox.InfoBoxManager;
 
+import java.io.IOException;
 import java.time.Instant;
 import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
@@ -136,7 +137,14 @@ public class PrisonSentencePlugin extends Plugin
 
 		if (ev.getItemContainer().contains(chase))
 		{
-			animation.Play();
+			try
+			{
+				animation.Play();
+			}
+			catch (IOException e)
+			{
+				log.error("Failed to play animation: " + e.getMessage());
+			}
 			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "prison_sentence", "Congratulations on escaping " + Translators.FriendlyName(config.prisonType()), "Prison sentence");
 			configManager.setConfiguration("prison_sentence", "has_escaped", true);
 		}

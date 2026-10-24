@@ -17,22 +17,37 @@ public class ReleaseAnimation extends Overlay
 
     long startedAt;
 
-    public ReleaseAnimation() throws IOException
+    public ReleaseAnimation()
     {
         this.setMovable(false);
-        synchronized (ImageIO.class)
-        {
-            slack = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_slack.png")));
-            tought = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_tought.png")));
-            snapped = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_split.png")));
-            fragments = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_fragments.png")));
-        }
         Stop();
     }
 
-    public void Play()
+    public void Play() throws IOException
     {
         startedAt = System.nanoTime();
+        synchronized (ImageIO.class)
+        {
+            if (slack == null)
+            {
+                slack = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_slack.png")));
+            }
+
+            if (tought == null)
+            {
+                tought = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_tought.png")));
+            }
+
+            if (snapped == null)
+            {
+                snapped = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_split.png")));
+            }
+
+            if (fragments == null)
+            {
+                fragments = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_fragments.png")));
+            }
+        }
     }
 
     public void Stop()
