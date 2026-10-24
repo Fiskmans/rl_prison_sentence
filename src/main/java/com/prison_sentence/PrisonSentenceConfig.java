@@ -49,4 +49,11 @@ public interface PrisonSentenceConfig extends Config
 			description = "The amount you had when your sentence started"
 	)
 	default int startAmount() { return 0; }
+
+	@ConfigItem(
+			keyName = "has_escaped",
+			name = "Has Escaped",
+			description = "Whether you are done"
+	)
+	default boolean hasEscaped() { return false; }
 }

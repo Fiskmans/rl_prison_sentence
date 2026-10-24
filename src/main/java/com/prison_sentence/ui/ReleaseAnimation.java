@@ -27,7 +27,7 @@ public class ReleaseAnimation extends Overlay
             snapped = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_split.png")));
             fragments = ImageIO.read(Objects.requireNonNull(getClass().getResourceAsStream("/Chain_fragments.png")));
         }
-        Play();
+        Stop();
     }
 
     public void Play()
@@ -95,7 +95,7 @@ public class ReleaseAnimation extends Overlay
         }
         else
         {
-            Play();
+            Stop();
         }
 
         return new Dimension(0, 0);

@@ -7,13 +7,12 @@ import com.google.inject.Provides;
 import javax.inject.Inject;
 
 import com.prison_sentence.ui.ReleaseAnimation;
+import com.prison_sentence.ui.Translators;
 import lombok.extern.slf4j.Slf4j;
-import net.runelite.api.ChatMessageType;
-import net.runelite.api.Client;
-import net.runelite.api.GameState;
-import net.runelite.api.Item;
+import net.runelite.api.*;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
+import net.runelite.api.events.ItemContainerChanged;
 import net.runelite.api.events.VarbitChanged;
 import net.runelite.client.callback.ClientThread;
 import net.runelite.client.config.ConfigManager;
@@ -50,6 +49,8 @@ public class PrisonSentencePlugin extends Plugin
 	public ClientThread clientThread;
 	@Inject
 	public OverlayManager overlayManager;
+	@Inject
+	public ConfigManager configManager;
 
 	private Current myCurrent = null;
 	private Sentence sentence = null;
@@ -119,6 +120,28 @@ public class PrisonSentencePlugin extends Plugin
 		myCurrent.onVarbitChanged(varbitChanged);
 	}
 
+
+	@Subscribe
+	public void onItemContainerChanged(ItemContainerChanged ev)
+	{
+		if (config.hasEscaped())
+			return;
+
+		int chase = Translators.ChaseItem(config.prisonType());
+		if (chase == -1)
+			return;
+
+		if (ev.getContainerId() != InventoryID.INVENTORY.getId())
+			return;
+
+		if (ev.getItemContainer().contains(chase))
+		{
+			animation.Play();
+			client.addChatMessage(ChatMessageType.GAMEMESSAGE, "prison_sentence", "Congratulations on escaping " + Translators.FriendlyName(config.prisonType()), "Prison sentence");
+			configManager.setConfiguration("prison_sentence", "has_escaped", true);
+		}
+	}
+
 	@Provides
     PrisonSentenceConfig provideConfig(ConfigManager configManager)
 	{
@@ -161,6 +184,8 @@ public class PrisonSentencePlugin extends Plugin
 	void Setup()
 	{
 		assert sentence == null;
+		if (config.hasEscaped())
+			return;
 
 		ISource source = null;
 

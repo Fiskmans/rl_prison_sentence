@@ -5,6 +5,7 @@ import com.prison_sentence.enums.TimePeriod;
 import net.runelite.api.ItemID;
 import net.runelite.api.VarPlayer;
 import net.runelite.api.Varbits;
+import net.runelite.api.gameval.VarPlayerID;
 
 public class Translators {
 
@@ -47,6 +48,20 @@ public class Translators {
             //case TOOMBS_OF_AMASCUT:   return -1; // TODO
 
             default:                    return "Unkown";
+        }
+    }
+
+    public static int ChaseItem(PrisonType aPrisonType)
+    {
+        switch (aPrisonType)
+        {
+            case GAUNTLET:              return net.runelite.api.gameval.ItemID.PRIF_WEAPON_SEED_ENHANCED;
+            case CORRUPTED_GAUNTLET:    return net.runelite.api.gameval.ItemID.PRIF_WEAPON_SEED_ENHANCED;
+            case CHAMBERS_OF_XERIC:     return -1;
+            //case THEATRE_OF_BLOOD:    return -1; // TODO
+            //case TOOMBS_OF_AMASCUT:   return -1; // TODO
+
+            default:                    return -1;
         }
     }
 
