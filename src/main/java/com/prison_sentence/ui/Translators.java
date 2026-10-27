@@ -16,6 +16,16 @@ public class Translators {
             case CHAMBERS_OF_XERIC:   return ItemID.OLMPET;
             //case THEATRE_OF_BLOOD:    return ItemID.LIL_ZIK;
             //case TOOMBS_OF_AMASCUT:   return ItemID.TUMEKENS_GUARDIAN;
+            case MAGGOT_KING:       return ItemID.MAGGOTKINGPET;
+            case ROYAL_TITANS:      return ItemID.RTBRANDAPET;
+            case VETION:
+            case CALVARION:         return ItemID.VETION_PET;
+            case VENENATIS:
+            case SPINDEL:           return ItemID.VENENATIS_PET;
+            case CALLISTO:
+            case ARTIO:             return ItemID.CALLISTO_PET;
+            case ZULRAH:            return ItemID.SNAKEPET;
+            case MAD_ANGEL:         return ItemID.MADANGELPET;
 
             default:                return ItemID.CABBAGE;
         }
@@ -30,6 +40,16 @@ public class Translators {
             case CHAMBERS_OF_XERIC:   return VarPlayerID.TOTAL_COMPLETED_XERICCHAMBERS;
             //case THEATRE_OF_BLOOD:    return -1; // TODO
             //case TOOMBS_OF_AMASCUT:   return -1; // TODO
+            case MAGGOT_KING:       return VarPlayerID.TOTAL_MAGGOT_KING_KILLS;
+            case ROYAL_TITANS:      return VarPlayerID.TOTAL_ROYAL_TITAN_KILLS;
+            case VETION:            return VarPlayerID.TOTAL_VETION_KILLS;
+            case CALVARION:         return VarPlayerID.TOTAL_CALVARION_KILLS;
+            case VENENATIS:         return VarPlayerID.TOTAL_VENENATIS_KILLS;
+            case SPINDEL:           return VarPlayerID.TOTAL_SPINDEL_KILLS;
+            case CALLISTO:          return VarPlayerID.TOTAL_CALLISTO_KILLS;
+            case ARTIO:             return VarPlayerID.TOTAL_ARTIO_KILLS;
+            case ZULRAH:            return VarPlayerID.TOTAL_SNAKEBOSS_KILLS;
+            case MAD_ANGEL:         return VarPlayerID.TOTAL_MAD_ANGEL_KILLS;
 
             default:                return -1;
         }
@@ -44,6 +64,16 @@ public class Translators {
             case CHAMBERS_OF_XERIC:     return "Chambers of Xeric";
             //case THEATRE_OF_BLOOD:    return -1; // TODO
             //case TOOMBS_OF_AMASCUT:   return -1; // TODO
+            case MAGGOT_KING:       return "Maggot King";
+            case ROYAL_TITANS:      return "Royal Titans";
+            case VETION:            return "Vet'ion";
+            case CALVARION:         return "Calvar'ion";
+            case VENENATIS:         return "Venenatis";
+            case SPINDEL:           return "Spindel";
+            case CALLISTO:          return "Callisto";
+            case ARTIO:             return "Artio";
+            case ZULRAH:            return "Zulrah";
+            case MAD_ANGEL:         return "Mad Angel";
 
             default:                    return "Unkown";
         }

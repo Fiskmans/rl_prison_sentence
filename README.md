@@ -9,3 +9,10 @@ Note, Any extra progress will overflow into the next period
 * Gauntlet 
 * Corrupted Gauntlet
 * Chambers of Xeric
+* Maggot King
+* Royal Titans
+* Vet'ion / Calvar'ion
+* Venenatis / Spindel
+* Callisto / Artio
+* Zulrah
+* Mad Angel
