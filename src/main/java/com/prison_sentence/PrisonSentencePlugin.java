@@ -10,6 +10,7 @@ import com.prison_sentence.ui.ReleaseAnimation;
 import com.prison_sentence.ui.Translators;
 import lombok.extern.slf4j.Slf4j;
 import net.runelite.api.*;
+import net.runelite.api.gameval.InventoryID;
 import net.runelite.api.events.GameStateChanged;
 import net.runelite.api.events.GameTick;
 import net.runelite.api.events.ItemContainerChanged;
@@ -132,7 +133,7 @@ public class PrisonSentencePlugin extends Plugin
 		if (chase == -1)
 			return;
 
-		if (ev.getContainerId() != InventoryID.INVENTORY.getId())
+		if (ev.getContainerId() != InventoryID.INV)
 			return;
 
 		if (ev.getItemContainer().contains(chase))
